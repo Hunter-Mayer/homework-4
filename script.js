@@ -32,17 +32,19 @@ var questionsList = [
 ]
 
 function renderQuiz() {
-    h1.innerText = questionsList[index].question + " | "  + questionsList[index].answer //Sets up Question
+     //Sets up Question
     //temporarily showing answer with questionsList[index].answer
+    var currentQuestion = questionsList[index]
+    h1.innerText = currentQuestion.question 
+    choicesEl.innerHTML = "" //clear out answerEL
 
-   
-    answersEl.innerHTML = "" //clear out answerEL
-
-    for (var i = 0; i < questionsList[index].choices.length; i++) //for loop to create the choices for each question of the quiz 
+    for (var i = 0; i < currentQuestion.choices.length; i++) {//for loop to create the choices for each question of the quiz 
+       
         var li = document.createElement('li') //create list item
-        var choice = questionsList[index].choices[i] //give text content
+        var choice = currentQuestion.choices[i] //give text content
         li.innerText = choice
         choicesEl.appendChild(li)
+    }
 }
 
 function showAnswer(){
