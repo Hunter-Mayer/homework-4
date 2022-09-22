@@ -1,32 +1,55 @@
 var h1 = document.querySelector("h1")
-var answersDiv = document.getElementById('answers')
+var choicesEl = document.getElementById('choices')
+var nextBtn = document.querySelector('button')
+var index = 0
 
-console.log(h1, answersDiv)
-// make a render function
-    //make a for loop that runs the quiz 
-    //increase the variable for the for loop of the quiz until the amount of questions is ran through
-
-//Add a next button
-
-//The beginning of the video on 9/21/2022 has all the helpful information Josh said to complete this project
-
-// make the questions an object
-    //put the questions and the answers in one object
-var questions = [
+var questionsList = [
     {
-        text: "test",
-        answer: "A",
-        choices: ["A","B", "C"]
+        question: "JavaScript is an ____ language?",
+        answer: "Object-Oriented",
+        choices: ["Object-Oriented","Object-Based", "Procedural", "None of the Above"]
     },
     {
-        text: "test",
-        answer: "A",
-        choices: ["A","B", "C"]  
+        question: "Which of the following keywords is used to define a variable in JavaScript?",
+        answer: "Both A and B",
+        choices: ["var","let", "Both A and B", "None of the Above"]
+    },
+    {
+        question: "How can a datatype be declared to be a constant type?",
+        answer: "const",
+        choices: ["const","var", "let", "constant"]
+    },
+    {
+        question: "What keyword is used to check whether a give property is valid or not?",
+        answer: "in",
+        choices: ["in","is in", "exists", "lies"]
+    },
+    {
+        question: "Which function is used to serialize an object into a JSON string in JavaScript?",
+        answer: "stringify()",
+        choices: ["parse()","convert()", "stringify()", "None of the Above"]
     }
 ]
 
 function renderQuiz() {
-    h1.innerText = questions[0].text + " | " + questions[0].choices
+    h1.innerText = questionsList[index].question + " | "  + questionsList[index].answer //Sets up Question
+    //temporarily showing answer with questionsList[index].answer
+
+   
+    answersEl.innerHTML = "" //clear out answerEL
+
+    for (var i = 0; i < questionsList[index].choices.length; i++) //for loop to create the choices for each question of the quiz 
+        var li = document.createElement('li') //create list item
+        var choice = questionsList[index].choices[i] //give text content
+        li.innerText = choice
+        choicesEl.appendChild(li)
 }
 
-renderQuiz()
+function showAnswer(){
+    
+}
+
+nextBtn.addEventListener('click', function(){
+ index++
+ renderQuiz()
+})
