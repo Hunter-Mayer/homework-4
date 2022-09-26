@@ -63,6 +63,7 @@ choicesEl.addEventListener('click', function(e) {
         renderQuiz()
     } else {
         console.log("Minus Time")
+        timer-=5
     }
         
 })
