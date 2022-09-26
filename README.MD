@@ -1,7 +1,7 @@
 # Hunter Mayer Homework Challenge 4
 
 ## Description
-In this assignment I created a timed JavaScript quiz using what I learned of HTML, CSS, and JavaScript. 
+In this assignment I created a timed JavaScript quiz using what I learned of HTML, CSS, and JavaScript. It is still an unfinished work in progress, as all of the acceptance criteria are not yet met. 
 
 ### Acceptance Criteria
 GIVEN I am taking a code quiz
@@ -18,15 +18,15 @@ THEN I can save my initials and score
 
 ### Screenshot
 
-![screenshot](add here)
+![screenshot](/images/homework4_screencap.png)
 
 
 
 ### Deployed Application Links
 
-Github Repo: Add Here
+Github Repo: https://github.com/Hunter-Mayer/homework-4
 
-Github Page: Add Here
+Github Page: https://hunter-mayer.github.io/homework-4/
 
 ## Credits
 
