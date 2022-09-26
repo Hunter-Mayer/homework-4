@@ -111,6 +111,7 @@ function endQuiz () {
 }
 
 //To Do Still:
-//When all questions are answered correctly, end quiz and count remaining time left/save to score
+//When all questions are answered correctly, end quiz and count remaining time left and save as the score
 //When end quiz function is called, stop timer and use time remaining as score
 //save score and initials to local storage
+//display top scores with initials
