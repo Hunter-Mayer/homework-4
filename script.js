@@ -34,13 +34,16 @@ var questionsList = [
 ]
 
 function renderQuiz() {
-     //Sets up Question
-    //temporarily showing answer with questionsList[index].answer
+     
     // Condition to check if theres anymore questions
     // if the current index is = length of the questions
     // Then we call the end quiz function
+    if (index === 5) {
+        endQuiz()
+        
+    } else {
     var currentQuestion = questionsList[index]
-    h1.innerText = currentQuestion.question 
+    h1.innerText = currentQuestion.question
     choicesEl.innerHTML = "" //clear out answerEL
 
     for (var i = 0; i < currentQuestion.choices.length; i++) {//for loop to create the choices for each question of the quiz 
@@ -50,6 +53,7 @@ function renderQuiz() {
         button.innerText = choice
         choicesEl.appendChild(button)
     }
+    }   
 }
 
 
@@ -86,9 +90,27 @@ function startTimer() {
     timerEl.innerText = timer
     if( timer === 0) {
         clearInterval(myTimer)
-        //call end quiz function
+        endQuiz()
     }
 }, 1000)
 }
 
 //make an end quiz function
+function endQuiz () {
+    h1.textContent = "Game Over, Thank you for Playing!"
+    console.log("Quiz over..")
+    clearInterval(timerEl)
+    var submitBtn = document.createElement ("button")
+    var inputInitials = document.createElement("input") 
+    QuizEnd.appendChild(inputInitials)
+    submitBtn.textContent = "Please type your Initials!"
+    QuizEnd.appendChild(submitBtn)
+    submitBtn.addEventListener("click", function(){
+//save initials to local storage?
+    })
+}
+
+//To Do Still:
+//When all questions are answered correctly, end quiz and count remaining time left/save to score
+//When end quiz function is called, stop timer and use time remaining as score
+//save score and initials to local storage
