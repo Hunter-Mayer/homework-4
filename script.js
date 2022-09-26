@@ -1,7 +1,9 @@
 var h1 = document.querySelector("h1")
 var choicesEl = document.getElementById('choices')
-var nextBtn = document.querySelector('button')
+var startBtn = document.querySelector('button')
 var index = 0
+var timer = 50
+var timerEl = document.getElementById('timer')
 
 var questionsList = [
     {
@@ -25,7 +27,7 @@ var questionsList = [
         choices: ["in","is in", "exists", "lies"]
     },
     {
-        question: "Which function is used to serialize an object into a JSON string in JavaScript?",
+        question: "Which  function is used to serialize an object into a JSON string in JavaScript?",
         answer: "stringify()",
         choices: ["parse()","convert()", "stringify()", "None of the Above"]
     }
@@ -34,24 +36,58 @@ var questionsList = [
 function renderQuiz() {
      //Sets up Question
     //temporarily showing answer with questionsList[index].answer
+    // Condition to check if theres anymore questions
+    // if the current index is = length of the questions
+    // Then we call the end quiz function
     var currentQuestion = questionsList[index]
     h1.innerText = currentQuestion.question 
     choicesEl.innerHTML = "" //clear out answerEL
 
     for (var i = 0; i < currentQuestion.choices.length; i++) {//for loop to create the choices for each question of the quiz 
        
-        var li = document.createElement('li') //create list item
+        var button = document.createElement('button') //create list item
         var choice = currentQuestion.choices[i] //give text content
-        li.innerText = choice
-        choicesEl.appendChild(li)
+        button.innerText = choice
+        choicesEl.appendChild(button)
     }
 }
 
-function showAnswer(){
-    
+
+// THe user clicks a button as their choice for the question
+choicesEl.addEventListener('click', function(e) {
+    console.log(e.target.textContent)
+    var choice = e.target.textContent
+    if(choice === questionsList[index].answer){
+        console.log("Next question")
+        index++
+        renderQuiz()
+    } else {
+        console.log("Minus Time")
+    }
+        
+})
+// Once they choose, we grab the text of the choice
+// Then compare it to what the answer should be
+//If it's correct, it will go to next question
+// If wrong minus time
+
+
+startBtn.addEventListener('click', function(e){
+    console.log(e.target.textContent)
+    renderQuiz()
+    startTimer()
+})
+
+function startTimer() {
+    var myTimer = setInterval(function(){
+    timer--
+    console.log(timer)
+    timerEl.innerText = timer
+    if( timer === 0) {
+        clearInterval(myTimer)
+        //call end quiz function
+    }
+}, 1000)
 }
 
-nextBtn.addEventListener('click', function(){
- index++
- renderQuiz()
-})
+//make an end quiz function
